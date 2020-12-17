@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+  <title>Chat App</title>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+  <!-- <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/marx-css@3.0.8/css/marx.min.css"> -->
+  <!-- <link rel="stylesheet"
+    href="https://unpkg.com/sakura.css/css/sakura-dark.css"> -->
+  <link rel="stylesheet"
+    href="style.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+<body>
+  <h1>Chat</h1>
+  <div id="messages">
+  </div>
+  <form id="form">
+    <input id="input"
+      autocomplete="off"
+      type="text"
+      placeholder="Your message...">
+  </form>
+  <div class="user-wrapper"
+    style="display: flex; align-items: center;">
+    <span>Your name:</span>
+    <input id="chatName"
+      type="text">
+    <span>Choose your color:</span>
+    <input id="color"
+      value="#303D4E"
+      type="color">
+    <button id="submitBtn"
+      title="Send"
+      style="margin-left: auto"><i class="fas fa-paper-plane"></i></button>
+  </div>
+  <script src='chat.js'></script>
+</body>
+
+</html>

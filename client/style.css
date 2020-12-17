@@ -1,0 +1,38 @@
+.timestamp {
+  position: absolute;
+  right: 0;
+  padding-right: 1rem;
+}
+pre {
+  position: relative;
+}
+
+form input[type] {
+  width: calc(100% - 26px);
+}
+
+#messages {
+  max-height: 75vh;
+  overflow: auto;
+  margin-bottom: 2.5rem;
+  padding-right: 1rem;
+}
+
+pre {
+  background-color: #303d4e;
+  padding: 0.6rem;
+  font-family: sans-serif;
+}
+
+pre:last-child {
+  margin-bottom: 0;
+}
+
+.user-wrapper input {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.name {
+  font-weight: bold;
+}
