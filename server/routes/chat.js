@@ -1,7 +1,6 @@
 const router = require('express').Router()
 const messageModel = require('../models/message')
 const chatEmitter = require('../chatEmitter')
-const format = require('date-fns/format');
 
 router.get('/', async (req, res) => {
   const messages = await messageModel.find({}).lean()
@@ -9,12 +8,12 @@ router.get('/', async (req, res) => {
   try {
     res.send(messages)
   } catch (err) {
-    res.status(500).send(err);
+    res.status(500).send(err)
   }
 })
 
 router.post('/', async (req, res) => {
-  const message = new messageModel(req.body);
+  const message = new messageModel(req.body)
 
   try {
     await message.save();

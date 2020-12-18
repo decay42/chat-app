@@ -1,5 +1,5 @@
 const config = {
-  serverIP: 'http://ip.janpfeiffer.de:1337'
+  serverIP: 'http://ip.janpfeiffer.de:1337/api'
 }
 
 const messagesContainer = document.getElementById('messages')
@@ -26,7 +26,7 @@ function addMessage(message) {
 
 function submitMessage() {
   if (!inputEl.value) {
-    return alert('Message is required!')
+    return alert('Message is required')
   }
   fetch(`${config.serverIP}/chat`, {
     method: 'POST',

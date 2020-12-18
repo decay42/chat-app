@@ -1,5 +1,7 @@
 const express = require('express')
 const cors = require('cors')
+const serveStatic = require('serve-static')
+const path = require('path')
 const mongoose = require('mongoose')
 const chatRoute = require('./routes/chat')
 require('dotenv').config()
@@ -18,6 +20,8 @@ mongoose
 app.use(cors())
 app.use(express.json())
 
-app.use('/chat', chatRoute)
+app.use('/api/chat', chatRoute)
+
+app.use(serveStatic(path.join(__dirname, '../', 'client')))
 
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`))
