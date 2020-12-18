@@ -1,6 +1,7 @@
 .timestamp {
   margin-left: auto;
   font-size: smaller;
+  font-weight: 300;
 }
 
 form input[type] {
@@ -28,13 +29,24 @@ div.message:last-child {
   margin-bottom: 0;
 }
 
+.user-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .user-wrapper input {
   margin-left: 1rem;
   margin-right: 1rem;
 }
 
 .name {
-  font-weight: bold;
-  margin-right: .25rem;
+  font-weight: 600;
+  margin-right: 0.25rem;
   align-self: flex-start;
+}
+
+body,
+div.message {
+  font-family: "Montserrat", sans-serif;
 }
