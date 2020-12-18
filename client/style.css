@@ -1,10 +1,6 @@
 .timestamp {
-  position: absolute;
-  right: 0;
-  padding-right: 1rem;
-}
-pre {
-  position: relative;
+  margin-left: auto;
+  font-size: smaller;
 }
 
 form input[type] {
@@ -12,19 +8,23 @@ form input[type] {
 }
 
 #messages {
-  max-height: 75vh;
+  max-height: 70vh;
   overflow: auto;
   margin-bottom: 2.5rem;
   padding-right: 1rem;
 }
 
-pre {
+div.message {
   background-color: #303d4e;
   padding: 0.6rem;
   font-family: sans-serif;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
 }
 
-pre:last-child {
+div.message:last-child {
   margin-bottom: 0;
 }
 
@@ -35,4 +35,6 @@ pre:last-child {
 
 .name {
   font-weight: bold;
+  margin-right: .25rem;
+  align-self: flex-start;
 }

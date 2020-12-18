@@ -1,25 +1,42 @@
-new window.EventSource('http://ip.janpfeiffer.de:1337/chat/sse').onmessage = function (event) {
+const config = {
+  serverIP: 'http://ip.janpfeiffer.de:1337'
+}
+
+const messagesContainer = document.getElementById('messages')
+const formEl = document.getElementById('form')
+
+new window.EventSource(`${config.serverIP}/chat/sse`).onmessage = function (event) {
   addMessage(JSON.parse(event.data))
 }
 
 function addMessage(message) {
   const date = new Date(message.createdAt)
   const formattedTimestamp = date.toLocaleDateString() + ' ' + date.toLocaleTimeString()
-  window.messages.innerHTML += `<pre style="background-color: ${message.color || '#303D4E'};"><span class="name">${message.name ? message.name + ': ' : ''}</span><span class="message">${message.message}</span><span class="timestamp">${formattedTimestamp}</span></pre>`
-  window.messages.scrollTop = window.messages.scrollHeight
+  const messageEl = document.createElement('div')
+  messageEl.className = 'message'
+  messageEl.style.backgroundColor = message.color || '#303D4E'
+  messageEl.innerHTML = message.name ? `<span class="name">${message.name ? message.name + ': ' : ''}</span>` : ''
+  messageEl.innerHTML += `
+    <span class="message">${message.message}</span>
+    <span class="timestamp">${formattedTimestamp}</span>
+  `
+  messagesContainer.appendChild(messageEl)
+  messagesContainer.scrollTop = messagesContainer.scrollHeight
 
 }
 
-window.form.addEventListener('submit', (event) => {
+formEl.addEventListener('submit', (event) => {
   evt.preventDefault()
   submitMessage()
 })
+
+window.addEventListener('resize', () => messagesContainer.scrollTop = messagesContainer.scrollHeight)
 
 function submitMessage() {
   if (!window.input.value) {
     return alert('Message is required!')
   }
-  window.fetch('http://ip.janpfeiffer.de:1337/chat', {
+  window.fetch(`${config.serverIP}/chat`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -46,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const localName = localStorage.getItem('chat-name')
   if (localColor) window.color.value = localColor
   if (localName) window.chatName.value = localName
-  window.fetch('http://ip.janpfeiffer.de:1337/chat').then(async res => {
+  window.fetch(`${config.serverIP}/chat`).then(async res => {
     const messages = await res.json();
     return messages
   }).then(messages => {
